@@ -1,0 +1,145 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+<Content1>
+    orientation: "vertical"
+    spacing: "10dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "LzCoins"
+
+    MDTextField:
+        hint_text: "Email"
+<Content2>
+    orientation: "vertical"
+    spacing: "10dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "LzCoins"
+
+    MDTextField:
+        hint_text: "Email"
+
+<Content3>
+    orientation: "vertical"
+    spacing: "10dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "LzCoins"
+
+    MDTextField:
+        hint_text: "Number"
+    MDTextField:
+        hint_text: "Internet / Vocal..."
+
+<Content4>
+    orientation: "vertical"
+    spacing: "10dp"
+    size_hint_y: None
+    height: "120dp"
+
+    MDTextField:
+        hint_text: "LzCoins"
+
+    MDTextField:
+        hint_text: "Number"
+    MDTextField:
+        hint_text: "Internet / Vocal..."
+
+<HotReload>
+    name: "hotreload"
+    id: hotreload
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            right_action_items: [["motion-play", "click and get notifications !"]]
+            md_bg_color: rgba(214, 229, 250, 255)
+            specific_text_color: get_color_from_hex("#676FA3")
+        MDBottomNavigation:
+            panel_color: get_color_from_hex("#eeeaea")
+            selected_color_background: get_color_from_hex("#00008B")
+            text_color_active: 0, 0, 139, 1
+            
+            MDBottomNavigationItem:
+                name: 'screen 1'
+                text: 'Home'
+                icon: 'bank'
+                        
+                MDFlatButton:
+                    id: earn_btn
+                    text: "click to earn"
+                    md_bg_color: rgba(214, 229, 250, 255)
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    disabled: True
+                MDCard:
+                    size_hint: 10, .4
+                    pos_hint: {"center_x": .5, "center_y": .8}
+                    md_bg_color: rgba(214, 229, 250, 255)
+                    elevation: 50
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        MDLabel:
+                            id: score_label
+                            text: str(app.score) + " LzCoins"
+                            font_name: "Poppins-SemiBold"
+                            halign: "center"
+                        MDLabel:
+                            text: str(app.score*0.09) + "$"
+                            font_name: "Poppins-Regular"
+                            pos_hint: {"center_x": .5, "center_y": .3}
+                MDIconButton:
+                    icon: "arrow-right"
+                    pos_hint: {"center_y": .95}
+                    user_font_size: "30sp"
+                    on_release:
+                        root.manager.transition.direction = "right"
+                        root.manager.current = "clickspage"
+            MDBottomNavigationItem:
+                name: 'screen 2'
+                text: 'Withdraw'
+                icon: 'cards'
+
+                ScrollView:
+                    MDList:
+                        TwoLineAvatarListItem:
+                            text: "Paypal"
+                            secondary_text: "Available only on All Countries"
+                            on_release: app.withdraw_paypal()
+                            IconLeftWidget:
+                                icon: "img/paypal.png"
+                        TwoLineAvatarListItem:
+                            text: "Payoneer"
+                            secondary_text: "Available only on All Countries"
+                            on_release: app.withdraw_payoneer()
+                            IconLeftWidget:
+                                icon: "help"
+                        TwoLineAvatarListItem:
+                            text: "Orange"
+                            secondary_text: "Available only on Morocco"
+                            on_release: app.withdraw_orange()
+                            IconLeftWidget:
+                                icon: "img/og.png"
+                            
+                        TwoLineAvatarListItem:
+                            text: "Iam"
+                            secondary_text: "Available only on Morocco"
+                            on_release: app.withdraw_iam()
+                            IconLeftWidget:
+                                icon: "img/iam.jpg"
+                    
+
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: 'account'
+                icon: 'information'
+
+                MDLabel:
+                    text: 'How Our Application Work'
+                    halign: 'center'
+
+                
+
